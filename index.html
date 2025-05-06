@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Product list with cart</title>
+  </head>
+  <body>
+    <section class="w-full flex gap-4 items-start">
+      <main class="w-3/4 gap-4">
+        <h1 class="text-2xl font-bold mb-4">Desserts</h1>
+        <section
+          class="grid grid-cols-1 gap-6 md:grid-cols-3"
+          id="catalog"
+        ></section>
+      </main>
+      <aside class="w-1/4 bg-[#fcf9f7] h-fit pt-2 pb-4 px-4">
+        <h2 class="text-nowrap text-lg mb-4 font-bold text-[#c73a0f]">
+          Your Cart <span class="ml-2" id="quantity"></span>
+        </h2>
+        <figure
+          class="empty w-full flex flex-col items-center text-center py-6"
+        >
+          <img
+            src="/assets//images/illustration-empty-cart.svg"
+            alt="empty-cart"
+            class="w-[80%]"
+          />
+          <figcaption class="text-sm text-[#c9aea6] font-semibold">
+            Your added items will appear here
+          </figcaption>
+        </figure>
+        <article class="cart-details">
+          <!-- <article
+            class="flex justify-between items-center pb-2 border-b-[1px] border-[c9aea6]"
+          >
+            <article>
+              <h5 class="text-[#260f08]">Wsggle with tail</h5>
+              <p>
+                <span class="text-[#c73a0f] text-[12px]" id="quantity"
+                  >Qty</span
+                >
+                <span class="text-[#c9aea6] text-[12px]">@ ${item.price}</span>
+                <span class="text-[#c9aea6] text-[12px]" id="totalPrice"
+                  >${total}</span
+                >
+              </p>
+            </article>
+
+            <button
+              class="border-[1px] border-[#c9aea6] grid place-items-center h-4 w-4 rounded-[100%]"
+            >
+              <img src="/assets/images//icon-remove-item.svg" alt="cancel" />
+            </button>
+          </article>
+          <p class="text-[#260f08] flex justify-between items-center mt-2">
+            <small>Order Total</small>
+            <span class="font-bold" id="total">$460.50</span>
+          </p> -->
+        </article>
+      </aside>
+    </section>
+
+    <footer class="block text-[11px] text-center">
+      Challenge by
+      <a
+        href="https://www.frontendmentor.io?ref=challenge"
+        class="text-[#3e52a3] text-[11px] text-center"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="#" class="text-[#3e52a3] text-[11px] text-center"
+        >Oluwalayomi Lawore</a
+      >.
+    </footer>
+    <script src="index.js"></script>
+  </body>
+</html>
