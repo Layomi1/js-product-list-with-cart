@@ -29,7 +29,8 @@
           Your Cart <span class="ml-2" id="quantity"></span>
         </h2>
         <figure
-          class="empty w-full flex flex-col items-center text-center py-6"
+          id=""
+          class="empty-cart w-full flex flex-col items-center text-center py-6"
         >
           <img
             src="/assets//images/illustration-empty-cart.svg"
@@ -40,34 +41,11 @@
             Your added items will appear here
           </figcaption>
         </figure>
-        <article class="cart-details">
-          <!-- <article
-            class="flex justify-between items-center pb-2 border-b-[1px] border-[c9aea6]"
-          >
-            <article>
-              <h5 class="text-[#260f08]">Wsggle with tail</h5>
-              <p>
-                <span class="text-[#c73a0f] text-[12px]" id="quantity"
-                  >Qty</span
-                >
-                <span class="text-[#c9aea6] text-[12px]">@ ${item.price}</span>
-                <span class="text-[#c9aea6] text-[12px]" id="totalPrice"
-                  >${total}</span
-                >
-              </p>
-            </article>
-
-            <button
-              class="border-[1px] border-[#c9aea6] grid place-items-center h-4 w-4 rounded-[100%]"
-            >
-              <img src="/assets/images//icon-remove-item.svg" alt="cancel" />
-            </button>
-          </article>
-          <p class="text-[#260f08] flex justify-between items-center mt-2">
-            <small>Order Total</small>
-            <span class="font-bold" id="total">$460.50</span>
-          </p> -->
-        </article>
+        <article id="cart-details"></article>
+        <p class="hidden text-[#260f08] flex justify-between items-center mt-2">
+          <small>Order Total</small>
+          <span class="font-bold" id="total">$460.50</span>
+        </p>
       </aside>
     </section>
 

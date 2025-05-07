@@ -32,8 +32,7 @@ fetch("./data.json")
                     class="counter hidden absolute flex justify-center items-center gap-10 top-[62%] left-[10%] text-sm bg-[#c73a0f] py-4 px-6 rounded-full"
                 >
                   <button
-                    class="addQuantity active:bg-white border-[1px] border-white rounded-full px-[7px] py-3"
-                   "
+                    class="reduceQuantity active:bg-white border-[1px] border-white rounded-full px-[7px] py-3"
                   >
                     <img
                       src="./assets/images/icon-decrement-quantity.svg"
@@ -41,15 +40,15 @@ fetch("./data.json")
                     />
                 </button>
 
-                <span class="text-white" id="quantity"></span>
+                <span class="quantity text-white" ></span>
                 <button
-                  class="reduceQuantity active:bg-white border-[1px] border-white rounded-full px-[7px] py-2"
+                  class="addQuantity active:bg-white border-[1px] border-white rounded-full px-[7px] py-2"
                   >
                   <img
                      src="./assets/images/icon-increment-quantity.svg"
                        class="active:text-[#c73a0f]"
                   />
-                </button>   
+                </button>
               </article>
              </article>
           </figure>`
@@ -57,47 +56,83 @@ fetch("./data.json")
       .join("");
 
     const catalog = document.querySelector("#catalog");
-
     catalog.innerHTML = menuList;
 
-    let quantity = document.querySelectorAll("#quantity");
-    quantity[index].textContent = 0;
-    let addCart = document.querySelectorAll(".cart");
-    let addQuantity = document.querySelectorAll(".addQuantity");
-    let reduceQuantity = document.querySelectorAll(".reduceQuantity");
-    let counter = document.querySelectorAll(".counter");
+    let quantityDisplays = document.querySelectorAll(".quantity");
+    let addCartBtns = document.querySelectorAll(".cart");
 
-    let itemCount = quantity[index].textContent;
-    console.log(itemCount);
-    let currentCount = parseInt(itemCount);
+    let addQuantityBtns = document.querySelectorAll(".addQuantity");
+    let reduceQuantityBtns = document.querySelectorAll(".reduceQuantity");
+    let counters = document.querySelectorAll(".counter");
 
-    addCart.forEach((btn, index) => {
+    let cart = [];
+
+    let cartDetails = document.querySelector("#cart-details");
+    let emptyCart = document.querySelector(".empty-cart");
+
+    /*******AddItem item from cart***************/
+    addCartBtns.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        btn.classList.add("hidden");
+        counters[index].classList.remove("hidden");
+
+        quantityDisplays[index].textContent = 1;
+        cart.push({ ...menu[index], quantity: 1 });
+        ``;
+        emptyCart.classList.add("hidden");
+
+        cartDetails.innerHTML = cart.map(
+          (item) => `
+            <article
+            class="flex justify-between items-center pb-2 border-b-[1px] border-[c9aea6]"
+          >
+            <article>
+              <h5 class="text-[#260f08]">${item.name}</h5>
+              <p>
+                <span class="quantity text-[#c73a0f] text-[12px]" 
+                  >${item.quantity}X</span
+                >
+                <span class="text-[#c9aea6] text-[12px]">@ $${
+                  item.price
+                }.00</span>
+                <span class="text-[87635a] text-[12px] font-medium" id="totalPrice"
+                  >$${item.price * item.quantity}.00</span
+                >
+              </p>
+            </article>
+
+            <button
+              class="remove border-[1px] border-[#c9aea6] grid place-items-center h-4 w-4 rounded-[100%]"
+            >
+              <img src="/assets/images//icon-remove-item.svg" alt="cancel" />
+            </button>
+          </article>
+        `
+        );
+      });
+    });
+
+    /*******Remove item from cart***************/
+    let cancelBtns = document.querySelectorAll(".remove");
+
+    cancelBtns.forEach((btn, index) => {
       btn.addEventListener("click", () => {
         console.log("clicked");
-
-        itemCount = currentCount++;
-        console.log(itemCount);
-
-        btn.classList.add("hidden");
-        counter[index].classList.remove("hidden");
+        // cart.splice({ ...menu[index] });
       });
     });
 
-    addQuantity.forEach((btn, index) => {
-      console.log("add");
+    /*******Increase item in cart***************/
+    addQuantityBtns.forEach((btn, index) => {
       btn.addEventListener("click", () => {
-        quantity[index].textContent += 1;
+        console.log("addQty");
       });
     });
 
-    reduceQuantity.forEach((btn, index) => {
-      console.log("reduce");
+    /*******Reduce item in Cart***************/
+    reduceQuantityBtns.forEach((btn, index) => {
       btn.addEventListener("click", () => {
-        if (counter < 0) {
-          quantity[index].textContent -= 1;
-        } else {
-          quantity[index].textContent = 0;
-        }
+        console.log("reduceQty");
       });
     });
   })
