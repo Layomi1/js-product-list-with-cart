@@ -89,7 +89,7 @@ fetch("./data.json")
             <article>
               <h5 class="text-[#260f08]">${item.name}</h5>
               <p>
-                <span class="quantity text-[#c73a0f] text-[12px]" 
+                <span class="cart-quantity text-[#c73a0f] text-[12px]" 
                   >${item.quantity}X</span
                 >
                 <span class="text-[#c9aea6] text-[12px]">@ $${
@@ -112,6 +112,44 @@ fetch("./data.json")
       });
     });
 
+    /*******Increase item in cart***************/
+    let cartQty = document.querySelectorAll(".cart-quantity");
+
+    const existingItenIndex = cart.findIndex(
+      (item) => item.anme === menu[index].name
+    );
+    addQuantityBtns.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        let currentQty = parseInt(quantityDisplays[index].textContent);
+
+        currentQty++;
+
+        quantityDisplays[index].textContent = currentQty;
+
+        if (existingItenIndex !== -1) {
+          cart[existingItenIndex].quantity = currentQty;
+        } else {
+          cart.push({ ...menu[index], quantity: currentQty });
+        }
+      });
+    });
+
+    /*******Reduce item in Cart***************/
+    reduceQuantityBtns.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        let currentQty = parseInt(quantityDisplays[index].textContent);
+        if (currentQty <= 1) {
+          quantityDisplays[index].textContent = 0;
+          addCartBtns[index].classList.remove("hidden");
+          counters[index].classList.add("hidden");
+          cart.splice(existingItenIndex, 1);
+        } else {
+          currentQty--;
+          quantityDisplays[index].textContent = currentQty;
+        }
+      });
+    });
+
     /*******Remove item from cart***************/
     let cancelBtns = document.querySelectorAll(".remove");
 
@@ -119,20 +157,6 @@ fetch("./data.json")
       btn.addEventListener("click", () => {
         console.log("clicked");
         // cart.splice({ ...menu[index] });
-      });
-    });
-
-    /*******Increase item in cart***************/
-    addQuantityBtns.forEach((btn, index) => {
-      btn.addEventListener("click", () => {
-        console.log("addQty");
-      });
-    });
-
-    /*******Reduce item in Cart***************/
-    reduceQuantityBtns.forEach((btn, index) => {
-      btn.addEventListener("click", () => {
-        console.log("reduceQty");
       });
     });
   })
