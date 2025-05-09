@@ -69,6 +69,8 @@ fetch("./data.json")
 
     let cartDetails = document.querySelector("#cart-details");
     let emptyCart = document.querySelector(".empty-cart");
+    const grandTotal = document.querySelector(".grand-total");
+    const grandTotalValue = document.querySelector("#grand-total-no");
 
     /*******AddItem item from cart***************/
     addCartBtns.forEach((btn, index) => {
@@ -120,6 +122,24 @@ fetch("./data.json")
       `
         )
         .join("");
+      renderGrandTotal();
+    }
+
+    /************Total amount of items in Cart****************/
+    function renderGrandTotal() {
+      if (cart.length === 0) {
+        grandTotal.classList.add("hidden");
+        grandTotal.innerHTML = "";
+        return;
+      }
+      grandTotal.classList.remove("hidden");
+      const grandTotalValue = cart.reduce(
+        (sum, item) => sum + item.quantity * item.price,
+        0
+      );
+      grandTotal.innerHTML = ` 
+          <p>Order Total</p>
+          <span class="font-bold" id="grand-total-value">$${grandTotalValue}.00</span>`;
     }
 
     /*******Increase item in Counter & cart ***************/
