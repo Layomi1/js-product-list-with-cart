@@ -78,46 +78,51 @@ fetch("./data.json")
 
         quantityDisplays[index].textContent = 1;
         cart.push({ ...menu[index], quantity: 1 });
-        ``;
-        emptyCart.classList.add("hidden");
 
-        cartDetails.innerHTML = cart.map(
-          (item) => `
-            <article
-            class="flex justify-between items-center pb-2 border-b-[1px] border-[c9aea6]"
-          >
-            <article>
-              <h5 class="text-[#260f08]">${item.name}</h5>
-              <p>
-                <span class="cart-quantity text-[#c73a0f] text-[12px]" 
-                  >${item.quantity}X</span
-                >
-                <span class="text-[#c9aea6] text-[12px]">@ $${
-                  item.price
-                }.00</span>
-                <span class="text-[87635a] text-[12px] font-medium" id="totalPrice"
-                  >$${item.price * item.quantity}.00</span
-                >
-              </p>
-            </article>
-
-            <button
-              class="remove border-[1px] border-[#c9aea6] grid place-items-center h-4 w-4 rounded-[100%]"
-            >
-              <img src="/assets/images//icon-remove-item.svg" alt="cancel" />
-            </button>
-          </article>
-        `
-        );
+        renderCartDetails();
       });
     });
 
-    /*******Increase item in cart***************/
-    let cartQty = document.querySelectorAll(".cart-quantity");
+    function renderCartDetails() {
+      if (cart.length === 0) {
+        emptyCart.classList.remove("hidden");
+        cartDetails.innerHTML = "";
+        return;
+      }
+      emptyCart.classList.add("hidden");
+      cartDetails.innerHTML = cart
+        .map(
+          (item) => `
+          <article
+          class="flex justify-between items-center pb-2 border-b-[1px] border-[c9aea6]"
+        >
+          <article>
+            <h5 class="text-[#260f08]">${item.name}</h5>
+            <p>
+              <span class="cart-quantity text-[#c73a0f] text-[12px]" 
+                >${item.quantity}X</span
+              >
+              <span class="text-[#c9aea6] text-[12px]">@ $${
+                item.price
+              }.00</span>
+              <span class="text-[87635a] text-[12px] font-medium" id="totalPrice"
+                >$${item.price * item.quantity}.00</span
+              >
+            </p>
+          </article>
 
-    const existingItenIndex = cart.findIndex(
-      (item) => item.anme === menu[index].name
-    );
+          <button
+            class="remove border-[1px] border-[#c9aea6] grid place-items-center h-4 w-4 rounded-[100%]"
+          >
+            <img src="/assets/images//icon-remove-item.svg" alt="cancel" />
+          </button>
+        </article>
+      `
+        )
+        .join("");
+    }
+
+    /*******Increase item in Counter & cart ***************/
     addQuantityBtns.forEach((btn, index) => {
       btn.addEventListener("click", () => {
         let currentQty = parseInt(quantityDisplays[index].textContent);
@@ -125,19 +130,26 @@ fetch("./data.json")
         currentQty++;
 
         quantityDisplays[index].textContent = currentQty;
+        const existingItenIndex = cart.findIndex(
+          (item) => item.name === menu[index].name
+        );
 
         if (existingItenIndex !== -1) {
           cart[existingItenIndex].quantity = currentQty;
         } else {
           cart.push({ ...menu[index], quantity: currentQty });
         }
+        renderCartDetails();
       });
     });
 
-    /*******Reduce item in Cart***************/
+    /*******Reduce item in Counter and Cart***************/
     reduceQuantityBtns.forEach((btn, index) => {
       btn.addEventListener("click", () => {
         let currentQty = parseInt(quantityDisplays[index].textContent);
+        const existingItenIndex = cart.findIndex(
+          (item) => item.name === menu[index].name
+        );
         if (currentQty <= 1) {
           quantityDisplays[index].textContent = 0;
           addCartBtns[index].classList.remove("hidden");
@@ -146,17 +158,24 @@ fetch("./data.json")
         } else {
           currentQty--;
           quantityDisplays[index].textContent = currentQty;
+          cart[existingItenIndex].quantity = currentQty;
         }
+        renderCartDetails();
       });
     });
 
     /*******Remove item from cart***************/
     let cancelBtns = document.querySelectorAll(".remove");
 
-    cancelBtns.forEach((btn, index) => {
-      btn.addEventListener("click", () => {
+    cancelBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        // const existingItenIndex = cart.findIndex(
+        //   (item) => item.name === menu[index].name
+        // );
+
         console.log("clicked");
-        // cart.splice({ ...menu[index] });
+
+        renderCartDetails();
       });
     });
   })
