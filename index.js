@@ -122,8 +122,27 @@ fetch("./data.json")
       `
         )
         .join("");
+
       renderGrandTotal();
     }
+
+    /*******Remove item from cart***************/
+    cartDetails.addEventListener("click", (e) => {
+      const cancelBtn = e.target.closest(".remove");
+      if (!cancelBtn) return;
+
+      const itemElemnet = cancelBtn.closest("article");
+      const itemName = itemElemnet.closest("h5");
+
+      const index = cart.findIndex((item) => item.name === itemName);
+
+      if (index !== 1) {
+        cart.splice(index, 1);
+
+        renderCartDetails();
+        renderGrandTotal();
+      }
+    });
 
     /************Total amount of items in Cart****************/
     function renderGrandTotal() {
@@ -180,21 +199,6 @@ fetch("./data.json")
           quantityDisplays[index].textContent = currentQty;
           cart[existingItenIndex].quantity = currentQty;
         }
-        renderCartDetails();
-      });
-    });
-
-    /*******Remove item from cart***************/
-    let cancelBtns = document.querySelectorAll(".remove");
-
-    cancelBtns.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        // const existingItenIndex = cart.findIndex(
-        //   (item) => item.name === menu[index].name
-        // );
-
-        console.log("clicked");
-
         renderCartDetails();
       });
     });
