@@ -23,7 +23,7 @@ Want some support on the challenge? [Join our community](https://www.frontendmen
 
 ## Deploying your project
 
-- [Netlify]([https://www.netlify.com/](https://frontend-rookie-product-listing.netlify.app/))
+- Netlify: https://frontend-rookie-product-listing.netlify.app/
 
 
 
