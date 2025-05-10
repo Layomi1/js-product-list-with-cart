@@ -174,7 +174,7 @@ fetch("./data.json")
             src="/assets/images/icon-carbon-neutral.svg"
             alt="carbon-neutral"
           />
-          <figcaption class="text-[14px]">
+          <figcaption class=" text-[12px] md:text-[14px]">
             This is a <span class="font-bold">carbon neutral </span> delivery
           </figcaption>
         </figure>
@@ -245,10 +245,10 @@ fetch("./data.json")
                 <img
                   src=${item.image.thumbnail}
                   alt="cart-item image"
-                  class="w-full max-w-[100px] md:max-w-50 h-auto object-cover rounded-md"
+                  class="w-full max-w-[80px] md:max-w-50 h-auto object-cover rounded-md"
                 />
                 <figcaption>
-                  <p class="text-[#260f08] font-medium truncate...">${
+                  <p class="text-[#260f08] font-medium truncate overflow-hidden whitespace-nowrap max-w-[100px]">${
                     item.name
                   }</p>
                   <p>
