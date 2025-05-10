@@ -248,14 +248,14 @@ fetch("./data.json")
                   class="w-full max-w-[80px] md:max-w-50 h-auto object-cover rounded-md"
                 />
                 <figcaption>
-                  <p class="text-[#260f08] font-medium truncate overflow-hidden whitespace-nowrap max-w-[100px]">${
+                  <p class="text-[#260f08] font-medium truncate overflow-hidden md:overflow-visible whitespace-nowrap max-w-[100px] md:max-w-[400px]">${
                     item.name
                   }</p>
                   <p>
-                    <span class="cart-quantity text-[#c73a0f] text-[12px]">
+                    <span class="cart-quantity text-[#c73a0f] text-[12px] ">
                       ${item.quantity}X
                     </span>
-                    <span class="text-[#c9aea6] text-[12px]">
+                    <span class="text-[#c9aea6] text-[12px] ml-4">
                       @ $${item.price}.00
                     </span>
                   </p>
