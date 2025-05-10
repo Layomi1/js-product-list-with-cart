@@ -16,15 +16,15 @@
     <title>Product list with cart</title>
   </head>
   <body>
-    <section class="w-full flex gap-4 items-start">
-      <main class="w-3/4 gap-4">
+    <section class="w-full flex flex-col md:flex-row gap-4 imd:tems-start">
+      <main class="w-full md:w-3/4 gap-4">
         <h1 class="text-2xl font-bold mb-4">Desserts</h1>
         <section
-          class="grid grid-cols-1 gap-6 md:grid-cols-3"
+          class="w-full grid grid-cols-1 gap-6 md:grid-cols-3"
           id="catalog"
         ></section>
       </main>
-      <aside class="w-1/4 bg-[#fcf9f7] h-fit pt-2 pb-4 px-4">
+      <aside class="w-full md:w-1/4 bg-[#fcf9f7] h-fit pt-2 pb-4 px-4">
         <h2 class="text-nowrap text-lg mb-4 font-bold text-[#c73a0f]">
           Your Cart <span class="ml-2" id="quantity"></span>
         </h2>
@@ -41,10 +41,28 @@
           </figcaption>
         </figure>
         <article id="cart-details"></article>
-        <p
-          class="grand-total hidden text-[#260f08] flex justify-between items-center mt-2"
-        ></p>
+        <p class="grand-total hidden text-[#260f08] items-center mt-2"></p>
       </aside>
+    </section>
+    <section
+      class="hidden overlay absolute top-0 left-0 right-0 bottom-0 w-full h-full flex justify-center items-start z-[10] pt-20 md:pt-80 bg-black bg-opacity-[70%]"
+    >
+      <article
+        class="modal bg-white w-full min-w-[250px] max-w-[500px] h-auto p-6 rounded-[10px]"
+      >
+        <figure class="mb-6">
+          <img
+            src="/assets//images//icon-order-confirmed.svg"
+            alt="order confirmed"
+          />
+        </figure>
+        <article>
+          <h3 class="font-bold text-2xl">Order Confirmed</h3>
+          <p>We hope you enjoy your food!</p>
+        </article>
+
+        <article class="order-card w-full rounded-lg mt-6"></article>
+      </article>
     </section>
 
     <footer class="block text-[11px] text-center">
