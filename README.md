@@ -1,10 +1,5 @@
 # Frontend Mentor - Product list with cart
 
-![Design preview for the Product list with cart coding challenge](./preview.jpg)
-
-
-**To do this challenge, you need a good understanding of HTML, CSS and JavaScript.**
-
 ## The challenge
 
 Your challenge is to build out this product list project that includes a functional cart and get it looking as close to the design as possible.
