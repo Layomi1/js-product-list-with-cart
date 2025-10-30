@@ -6,21 +6,25 @@ fetch("./data.json")
     const menuList = menu
       .map(
         (item) =>
-          ` <figure class="w-full max-w-[320px] h-auto gap-2 mb-5 relative">
-              <img
-                src=${item.image.thumbnail}
-                alt=${item.name}
-                class="w-full flex flex-column mb-8 rounded-lg"
-              />
-              <figcaption>
-                <h2 class="text-[#c9aea6] font-bold">${item.category}</h2>
-                <h3 class="text-[#260f08] font-bold">${item.name}</h3>
-                <p class="text-[#c73a0f] font-bold">$ ${item.price}.00
-                </p>
-              </figcaption>
+          ` <article class="w-full max-w-[320px] h-auto gap-2 mb-5 relative">
+              <figure>
+                <img
+                  src=${item.image.thumbnail}
+                  alt=${item.name}
+                  class="w-full flex flex-column mb-8 rounded-lg"
+                />
+                <figcaption>
+                  <h2 class="text-[#c9aea6] font-bold">${item.category}</h2>
+                  <h3 class="text-[#260f08] font-bold">${item.name}</h3>
+                  <p class="text-[#c73a0f] font-bold">$ ${item.price}.00
+                  </p>
+                </figcaption>
+              </figure>
               <article class='switch'>
                 <button
                     class="cart absolute flex justify-center items-center gap-2 top-[68%] left-[20%] text-sm bg-white border-[1px] border-[#c73a0f] py-4 px-6 rounded-full text-white"
+                    aria-label="Add to Cart"
+                    type="button"
                 >
                   <img src="./assets/images/icon-add-to-cart.svg" alt ="add to cart icon" />
 
@@ -33,27 +37,33 @@ fetch("./data.json")
                 >
                   <button
                     class="reduceQuantity active:bg-white border-[1px] border-white rounded-full grid place-items-center w-6 h-6"
+                     aria-label="Decrease quantity"
+                     type="button"
                   >
                     <img
                       src="./assets/images/icon-decrement-quantity.svg"
                       class="active:fill-[#c73a0f]"
                       alt="decrease"
+                     
                     />
                 </button>
 
                 <span class="quantity text-white" ></span>
                 <button
+                type="button"
                   class="addQuantity active:bg-white border-[1px] border-white rounded-full h-6 w-6 grid place-items-center"
+                   aria-label="Icrease quantity"
                   >
                   <img
                      src="./assets/images/icon-increment-quantity.svg"
                        class="active:fill-[#c73a0f]"
                        alt= "increase"
+                      
                   />
                 </button>
               </article>
              </article>
-          </figure>`
+          </article>`
       )
       .join("");
 
@@ -106,7 +116,7 @@ fetch("./data.json")
           class="flex justify-between items-center pb-2 border-b-[1px] border-[c9aea6]"
         >
           <article>
-            <h5 class="text-[#260f08]">${item.name}</h5>
+            <h2 class="text-[#260f08]">${item.name}</h2>
             <p>
               <span class="cart-quantity text-[#c73a0f] text-[12px]" 
                 >${item.quantity}X</span
@@ -120,6 +130,8 @@ fetch("./data.json")
 
           <button
             class="remove border-[1px] border-[#c9aea6] grid place-items-center h-4 w-4 rounded-[100%]"
+            aria-label="Remove Item"
+            type="button"
           >
             <img src="/assets/images//icon-remove-item.svg" alt="cancel" />
           </button>
@@ -182,6 +194,7 @@ fetch("./data.json")
         </figure>
         <article class="flex justify-center">
           <button
+          type="button"
             class="confirm-btn text-white bg-[#c73a0f] py-2 px-20 text-nowrap text-md rounded-full active:bg-[#260f08]"
           >
             Confirm Order
@@ -280,6 +293,7 @@ fetch("./data.json")
       
             <article class="flex justify-center mt-4">
               <button
+              type="button"
                 class="start-order-btn text-white bg-[#c73a0f] py-2 px-20 md:px-40 text-nowrap text-md rounded-full active:bg-[#260f08]"
               >
                 Start New Order
