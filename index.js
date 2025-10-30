@@ -13,16 +13,16 @@ fetch("./data.json")
                 class="w-full flex flex-column mb-8 rounded-lg"
               />
               <figcaption>
-                <h4 class="text-[#c9aea6] font-bold">${item.category}</h4>
-                <h5 class="text-[#260f08] font-bold">${item.name}</h5>
-                <small class="text-[#c73a0f] font-bold">$ ${item.price}.00
-                </small>
+                <h2 class="text-[#c9aea6] font-bold">${item.category}</h2>
+                <h3 class="text-[#260f08] font-bold">${item.name}</h3>
+                <p class="text-[#c73a0f] font-bold">$ ${item.price}.00
+                </p>
               </figcaption>
               <article class='switch'>
                 <button
                     class="cart absolute flex justify-center items-center gap-2 top-[68%] left-[20%] text-sm bg-white border-[1px] border-[#c73a0f] py-4 px-6 rounded-full text-white"
                 >
-                  <img src="./assets/images/icon-add-to-cart.svg" />
+                  <img src="./assets/images/icon-add-to-cart.svg" alt ="add to cart icon" />
 
                   <span class="text-black active:text-[#c73a0f] hover:text-[#c73a0f]">
                       Add to Cart</span
@@ -37,6 +37,7 @@ fetch("./data.json")
                     <img
                       src="./assets/images/icon-decrement-quantity.svg"
                       class="active:fill-[#c73a0f]"
+                      alt="decrease"
                     />
                 </button>
 
@@ -47,6 +48,7 @@ fetch("./data.json")
                   <img
                      src="./assets/images/icon-increment-quantity.svg"
                        class="active:fill-[#c73a0f]"
+                       alt= "increase"
                   />
                 </button>
               </article>

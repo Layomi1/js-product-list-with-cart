@@ -3,8 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
-
     <link
       rel="icon"
       type="image/png"
@@ -16,15 +14,18 @@
     <title>Product list with cart</title>
   </head>
   <body>
-    <section class="w-full flex flex-col md:flex-row gap-4 imd:tems-start">
-      <main class="w-full md:w-3/4 gap-4">
+    <main class="w-full flex flex-col md:flex-row gap-4 imd:tems-start">
+      <section class="w-full md:w-3/4 gap-4">
         <h1 class="text-2xl font-bold mb-4">Desserts</h1>
         <section
           class="w-full grid grid-cols-1 gap-6 md:grid-cols-3"
           id="catalog"
         ></section>
-      </main>
-      <aside class="w-full md:w-1/4 bg-[#fcf9f7] h-fit pt-2 pb-4 px-4">
+      </section>
+      <aside
+        class="w-full md:w-1/4 bg-[#fcf9f7] h-fit pt-2 pb-4 px-4"
+        aria-label="Shopping cart"
+      >
         <h2 class="text-nowrap text-lg mb-4 font-bold text-[#c73a0f]">
           Your Cart <span class="ml-2" id="quantity"></span>
         </h2>
@@ -43,8 +44,11 @@
         <article id="cart-details"></article>
         <p class="grand-total hidden text-[#260f08] items-center mt-2"></p>
       </aside>
-    </section>
+    </main>
     <section
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="order-confirmed-title"
       class="hidden overlay absolute top-0 left-0 right-0 bottom-0 w-full h-full flex justify-center items-start z-[10] pt-20 md:pt-80 bg-black bg-opacity-[70%]"
     >
       <article
